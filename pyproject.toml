@@ -1,0 +1,145 @@
+[project]
+name = "pydebroglie-cli"
+version = "0.1.0"
+description = "Pure native Python implementation of the great wave function collapse C# lib 'DeBroglie' from 'BorisTheBrave'"
+license = { file = "LICENSE" }
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.12"
+authors = [
+  { name = "BorisTheBrave" },
+  { name = "Nitorac" }
+]
+dependencies = [
+    "pydebroglie",
+    "typer>=0.20.0",
+]
+
+[dependency-groups]
+dev = [
+    {include-group = "lint_format"},
+    {include-group = "test"},
+    {include-group = "types"},
+    {include-group = "nox"},
+    {include-group = "security"},
+]
+lint_format = [
+    "ruff>=0.13.3",
+]
+test = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+]
+types = [
+    "mypy>=1.18.2",
+]
+nox = [
+    "nox>=2025.10.16",
+    "nox-uv>=0.6.2",
+]
+security = [
+    "bandit>=1.8.6",
+]
+
+
+[project.urls]
+homepage = "https://github.com/Nitorac/pydebroglie#readme"
+repository = "https://github.com/Nitorac/pydebroglie"
+
+[project.scripts]
+pydebroglie = "pydebroglie_cli.cli:app"
+
+[tool.uv.sources]
+pydebroglie = { workspace = true }
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[build-system]
+requires = ["uv_build>=0.9"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+addopts = "-vvv"
+testpaths = [
+    # pydebroglie-cli
+    "tests",
+    # pydebroglie
+    "packages/pydebroglie/tests"
+]
+
+[tool.ruff]
+extend-exclude = [
+  "__pycache__",
+  "build",
+  "dist",
+]
+target-version = "py312"
+line-length = 90
+src = ["src", "tests", "packages/pydebroglie/src", "packages/pydebroglie/tests"]
+
+[tool.ruff.lint]
+extend-select = [
+  "C4",
+  "D200",
+  "D201",
+  "D204",
+  "D205",
+  "D206",
+  "D210",
+  "D211",
+  "D213",
+  "D300",
+  "D400",
+  "D402",
+  "D403",
+  "D404",
+  "D419",
+  "E",
+  "F",
+  "FURB",
+  "G010",
+  "I",
+  "INP001",
+  "N805",
+  "PERF101",
+  "PERF102",
+  "PERF401",
+  "PERF402",
+  "PGH004",
+  "PGH005",
+  "PIE794",
+  "PIE796",
+  "PIE807",
+  "PIE810",
+  "PLR",
+  "RET502",
+  "RET503",
+  "RET504",
+  "RET505",
+  "RUF015",
+  "RUF032",
+  "RUF033",
+  "RUF034",
+  "RUF041",
+  "RUF043",
+  "RUF046",
+  "RUF057",
+  "RUF059",
+  "RUF100",
+  "S101",
+  "T20",
+  "UP",
+  "W",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*.py" = ["S101"]
+"packages/pydebroglie/tests/*.py" = ["S101"]
+
+[tool.mypy]
+files = ["src", "packages/pydebroglie/src"]
+strict = "true"
+
+# Only used in noxfile.py to find which folders to pass to bandit
+[tool.nox.bandit]
+files_to_scan = ["src", "packages/pydebroglie/src"]
