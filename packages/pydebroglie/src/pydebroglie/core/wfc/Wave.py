@@ -1,0 +1,2 @@
+class Wave:
+    pass
