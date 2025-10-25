@@ -8,7 +8,26 @@ options.default_venv_backend = "uv"
 
 @session(uv_groups=["test"])
 def test(s: Session) -> None:
-    s.run("python", "-m", "pytest", *s.posargs)
+    default_args = ["--cov-branch", "--cov-report=html"]
+    s.run(
+        "python",
+        "-m",
+        "pytest",
+        "packages/pydebroglie/tests",
+        "--cov=pydebroglie",
+        *default_args,
+        *s.posargs,
+    )
+    s.run(
+        "python",
+        "-m",
+        "pytest",
+        "./tests",
+        "--cov=pydebroglie_cli",
+        "--cov-append",
+        *default_args,
+        *s.posargs,
+    )
 
 
 @session(uv_groups=["types"])
