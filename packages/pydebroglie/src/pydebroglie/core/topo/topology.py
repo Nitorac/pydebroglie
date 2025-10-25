@@ -86,7 +86,7 @@ class ITopology(ABC):
 
     @property
     @abstractmethod
-    def mask(self) -> bitarray:
+    def mask(self) -> bitarray | None:
         """
         Array with one value per index indicating if the value is missing.
 

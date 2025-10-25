@@ -12,5 +12,6 @@ class PatternModel:
     # Stores the desired relative frequencies of each pattern
     frequencies: list[float]
 
+    @property
     def pattern_count(self) -> int:
         return len(self.frequencies)
