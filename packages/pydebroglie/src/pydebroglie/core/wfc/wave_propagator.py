@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from pydebroglie.core.trackers.index_picker import IIndexPicker
 from pydebroglie.core.trackers.pattern_picker import IPatternPicker
 from pydebroglie.core.wfc.backtrack_policies import IBacktrackPolicy
-from pydebroglie.core.wfc.wave_constraint import IWaveConstraint
 from pydebroglie.core.wfc.model_constraint_algorithm import ModelConstraintAlgorithm
+from pydebroglie.core.wfc.wave_constraint import IWaveConstraint
 
 
 @dataclass(init=False)
