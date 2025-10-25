@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from collections.abc import Callable
 
-from pydebroglie.core.wfc.WavePropagator import WavePropagator
+from pydebroglie.core.wfc.wave_propagator import WavePropagator
 
 
 class IIndexPicker(ABC):

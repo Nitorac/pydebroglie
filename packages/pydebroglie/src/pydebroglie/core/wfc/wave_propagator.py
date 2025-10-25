@@ -1,11 +1,11 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 
-from pydebroglie.core.trackers.IIndexPicker import IIndexPicker
-from pydebroglie.core.trackers.IPatternPicker import IPatternPicker
-from pydebroglie.core.wfc.BacktrackPolicies import IBacktrackPolicy
-from pydebroglie.core.wfc.IWaveConstraint import IWaveConstraint
-from pydebroglie.core.wfc.ModelConstraintAlgorithm import ModelConstraintAlgorithm
+from pydebroglie.core.trackers.index_picker import IIndexPicker
+from pydebroglie.core.trackers.pattern_picker import IPatternPicker
+from pydebroglie.core.wfc.backtrack_policies import IBacktrackPolicy
+from pydebroglie.core.wfc.wave_constraint import IWaveConstraint
+from pydebroglie.core.wfc.model_constraint_algorithm import ModelConstraintAlgorithm
 
 
 @dataclass(init=False)
