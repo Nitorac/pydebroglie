@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import IntEnum
 
 
-class Resolution(Enum):
+class Resolution(IntEnum):
     DECIDED = 0
     UNDECIDED = -1
     CONTRADICTION = -2

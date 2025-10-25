@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import IntEnum
 
 
-class Quadstate(Enum):
+class Quadstate(IntEnum):
     CONTRADICTION = -2
     NO = -1
     MAYBE = 0
