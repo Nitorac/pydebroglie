@@ -20,7 +20,7 @@ class IFilteredIndexPicker(ABC):
         pass
 
     @abstractmethod
-    def get_random_index_with_indicies(
+    def get_random_index_with_indices(
         self, random_double: Callable[[], float], indices: list[int]
     ) -> int:
         pass

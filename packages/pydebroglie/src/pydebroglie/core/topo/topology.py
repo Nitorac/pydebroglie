@@ -1,9 +1,10 @@
 from abc import ABC, abstractmethod
+from collections.abc import Generator
 from typing import Self, overload
 
 from bitarray import bitarray
 
-from pydebroglie.core.topo.directions import Direction, EdgeLabel
+from pydebroglie.core.topo.directions import Direction
 
 
 class ITopology(ABC):
@@ -50,7 +51,7 @@ class ITopology(ABC):
     @abstractmethod
     def try_move(
         self, index: int, direction: Direction
-    ) -> tuple[bool, int, Direction | None, EdgeLabel | None]:
+    ) -> tuple[bool, int, Direction | None, int | None]:
         """
         Given an index and direction, gives the index that is one step in that direction.
 
@@ -61,7 +62,7 @@ class ITopology(ABC):
         - succeeded: bool,
         - dest: int,
         - inverse_direction: Direction,
-        - edge_label: EdgeLabel,
+        - edge_label: int,
         """
         pass
 
@@ -69,7 +70,7 @@ class ITopology(ABC):
     @abstractmethod
     def try_move(
         self, x: int, y: int, z: int, direction: Direction
-    ) -> tuple[bool, int, Direction | None, EdgeLabel | None]:
+    ) -> tuple[bool, int, Direction | None, int | None]:
         """
         Given co-ordinate and direction, gives index that is one step in that direction.
 
@@ -80,7 +81,7 @@ class ITopology(ABC):
         - succeeded: bool,
         - dest: int,
         - inverse_direction: Direction,
-        - edge_label: EdgeLabel,
+        - edge_label: int,
         """
         pass
 
@@ -119,3 +120,11 @@ class ITopology(ABC):
     def with_mask(self, mask: bitarray) -> Self:
         """Returns this topology structure but with a different mask."""
         pass
+
+    def contains_index(self, index: int) -> bool:
+        return self.mask is None or bool(self.mask[index])
+
+    def get_indices(self) -> Generator[int]:
+        for i in range(self.index_count):
+            if self.contains_index(i):
+                yield i

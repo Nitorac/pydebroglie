@@ -34,10 +34,6 @@ class DirectionSetType(Enum):
     HEXAGONAL_3D = auto()
 
 
-class EdgeLabel(Enum):
-    pass
-
-
 class DirectionSet:
     """Wrapper around DirectionsType supplying some convenience data."""
 

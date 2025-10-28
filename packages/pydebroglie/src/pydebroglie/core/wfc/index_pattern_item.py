@@ -1,7 +1,7 @@
 class IndexPatternItem:
-    def __init__(self) -> None:
-        self.index: int = 0
-        self.pattern: int = 0
+    def __init__(self, index: int = 0, pattern: int = 0) -> None:
+        self.index = index
+        self.pattern = pattern
 
     def __eq__(self, other: object) -> bool:
         return (

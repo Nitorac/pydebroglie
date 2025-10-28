@@ -131,9 +131,9 @@ class EntropyTracker(ITracker, IIndexPicker, IFilteredIndexPicker):
         Then picks one randomly.
         Returns -1 if every cell is decided.
         """
-        return self.get_random_index_with_indicies(random_double, range(self.indices))
+        return self.get_random_index_with_indices(random_double, range(self.indices))
 
-    def get_random_index_with_indicies(
+    def get_random_index_with_indices(
         self, random_double: Callable[[], float], indices: Iterable[int]
     ) -> int:
         """
