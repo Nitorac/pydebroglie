@@ -9,7 +9,7 @@ class IBacktrackPolicy(ABC):
         pass
 
     @abstractmethod
-    def get_back_jump(self) -> int:
+    def get_backjump(self) -> int:
         pass
 
 
@@ -20,7 +20,7 @@ class ConstantBacktrackPolicy(IBacktrackPolicy):
     def init(self, wavepropagator: WavePropagator) -> None:
         pass
 
-    def get_back_jump(self) -> int:
+    def get_backjump(self) -> int:
         return self.amount
 
 
